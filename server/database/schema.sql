@@ -9,6 +9,7 @@ CREATE TABLE audio (
     url VARCHAR(200) NOT NULL,
     image VARCHAR(200) NOT NULL,
     description TEXT,
+    date DATETIME DEFAULT NOW(),
     category_id INT UNSIGNED,
     FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE SET NULL ON UPDATE CASCADE
 );
