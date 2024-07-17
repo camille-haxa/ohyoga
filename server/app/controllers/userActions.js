@@ -30,8 +30,8 @@ const read = async (req, res, next) => {
 // Add
 const add = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
-    const insertId = await tables.user.create(name, email, password);
+    const { username, email, password } = req.body;
+    const insertId = await tables.user.create(username, email, password);
 
     res.status(201).json({ insertId });
   } catch (error) {
