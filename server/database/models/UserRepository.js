@@ -31,6 +31,15 @@ class UserRepository extends AbstractRepository {
 
     return result.insertId;
   }
+
+  // Search user by email
+  async searchByEmail(email) {
+    const [result] = await this.database.query(
+      `SELECT name, email, password, r.name AS role FROM ${this.table} JOIN role AS r ON user.role_id=r.id WHERE email=?`,
+      [email]
+    );
+    return result;
+  }
 }
 
 module.exports = UserRepository;
