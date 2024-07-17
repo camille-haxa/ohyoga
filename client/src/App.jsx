@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import fetchAuth from "./utils/auth";
+import Navbar from "./components/navbar/NavBar";
 import "./App.css";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
     <div>
       <p> hello {currentUser?.username}</p>
       <main>
+        <Navbar />
         <Outlet context={{ currentUser, setCurrentUser }} />
       </main>
     </div>
