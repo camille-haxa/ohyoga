@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const AbstractRepository = require("./AbstractRepository");
 
 class UserRepository extends AbstractRepository {
@@ -24,10 +23,10 @@ class UserRepository extends AbstractRepository {
   }
 
   // Add - Create
-  async create(name, email, password, role_id) {
+  async create(name, email, password) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name, email, password, role_id) VALUES (?, ?, ?, ?)`,
-      [name, email, password, role_id]
+      `INSERT INTO ${this.table} (name, email, password) VALUES (?, ?, ?)`,
+      [name, email, password]
     );
 
     return result.insertId;
