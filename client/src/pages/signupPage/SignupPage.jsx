@@ -33,8 +33,8 @@ export default function SignupPage() {
           <label htmlFor="nom">nom d'utilisateur.ice</label>
           <input
             type="text"
-            name="name"
-            {...register("name", {
+            name="username"
+            {...register("username", {
               required: "ce champ est obligatoire!",
               minLength: {
                 value: 2,
@@ -46,7 +46,7 @@ export default function SignupPage() {
               },
             })}
           />
-          {errors.name && <p>{errors.name.message}</p>}
+          {errors.username && <p>{errors.username.message}</p>}
         </div>
         <div>
           <label htmlFor="email">email</label>

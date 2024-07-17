@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const userValidationSchema = Joi.object({
-  name: Joi.string().max(120).required(),
+  username: Joi.string().max(120).required(),
   email: Joi.string()
     .max(120)
     .regex(/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)

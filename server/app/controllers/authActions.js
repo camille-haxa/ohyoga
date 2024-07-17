@@ -26,7 +26,7 @@ const login = async (req, res) => {
   const token = await encodeJWT(user);
   return res
     .status(200)
-    .cookies("auth_token", token, {
+    .cookie("auth_token", token, {
       httpOnly: true,
       secure: false,
       maxAge: 3600000,
