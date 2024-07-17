@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const tables = require("../../database/tables");
 
 // Browse - Read All
@@ -31,8 +30,8 @@ const read = async (req, res, next) => {
 // Add
 const add = async (req, res, next) => {
   try {
-    const { name, email, password, role_id } = req.body;
-    const insertId = await tables.user.create(name, email, password, role_id);
+    const { name, email, password } = req.body;
+    const insertId = await tables.user.create(name, email, password);
 
     res.status(201).json({ insertId });
   } catch (error) {
