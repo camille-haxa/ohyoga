@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
+import "./SignupPage.css";
 
 import axios from "axios";
 
@@ -23,15 +24,18 @@ export default function SignupPage() {
 
   return (
     <section>
-      <h1>Inscription</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>
+      <h1 className="signup-h1">Inscription</h1>
+      <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
+        <h5 className="signup-description">
           {" "}
           enregistrez vous pour avoir accès aux enregistrements audios et vidéos
-        </h2>
-        <div>
-          <label htmlFor="nom">nom d'utilisateur.ice</label>
+        </h5>
+        <div className="signup-field">
+          <label className="form-label" htmlFor="nom">
+            nom d'utilisateur.ice
+          </label>
           <input
+            className="signup-input"
             type="text"
             name="username"
             {...register("username", {
@@ -46,11 +50,16 @@ export default function SignupPage() {
               },
             })}
           />
-          {errors.username && <p>{errors.username.message}</p>}
+          {errors.username && (
+            <p className="signup-error">{errors.username.message}</p>
+          )}
         </div>
-        <div>
-          <label htmlFor="email">email</label>
+        <div className="signup-field">
+          <label className="form-label" htmlFor="email">
+            email
+          </label>
           <input
+            className="signup-input"
             type="email"
             name="email"
             {...register("email", {
@@ -65,11 +74,16 @@ export default function SignupPage() {
               },
             })}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && (
+            <p className="signup-error">{errors.email.message}</p>
+          )}
         </div>
-        <div>
-          <label htmlFor="confirmez l'email">confirmez l'email</label>
+        <div className="signup-field">
+          <label className="form-label" htmlFor="confirmez l'email">
+            confirmez l'email
+          </label>
           <input
+            className="signup-input"
             type="email"
             name="confirmemail"
             {...register("confirmemail", {
@@ -86,11 +100,16 @@ export default function SignupPage() {
                 value === watch("email") || "les emails ne correspondent pas",
             })}
           />
-          {errors.confirmemail && <p>{errors.confirmemail.message}</p>}
+          {errors.confirmemail && (
+            <p className="signup-error">{errors.confirmemail.message}</p>
+          )}
         </div>
-        <div>
-          <label htmlFor="mot de passe">mot de passe</label>
+        <div className="signup-field">
+          <label className="form-label" htmlFor="mot de passe">
+            mot de passe
+          </label>
           <input
+            className="signup-input"
             type="password"
             name="password"
             {...register("password", {
@@ -107,11 +126,16 @@ export default function SignupPage() {
               },
             })}
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <p className="signup-error">{errors.password.message}</p>
+          )}
         </div>
-        <div>
-          <label htmlFor="confirmez mot de passe">confirmez mot de passe</label>
+        <div className="signup-field">
+          <label className="form-label" htmlFor="confirmez mot de passe">
+            confirmez le mot de passe
+          </label>
           <input
+            className="signup-input"
             type="password"
             name="confirmpassword"
             {...register("confirmpassword", {
@@ -126,10 +150,15 @@ export default function SignupPage() {
                 "les mots de passe ne correspondent pas",
             })}
           />
-          {errors.confirmpassword && <p>{errors.confirmpassword.message}</p>}
+          {errors.confirmpassword && (
+            <p className="signup-error">{errors.confirmpassword.message}</p>
+          )}
         </div>
 
-        <button type="submit"> s'inscrire</button>
+        <button className="signup-button" type="submit">
+          {" "}
+          s'inscrire
+        </button>
       </form>
     </section>
   );
