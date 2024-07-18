@@ -14,12 +14,15 @@ export default function NavBar({ currentUser }) {
             <Link to="/inscription">Inscription</Link>
           </li>
         ) : (
-          <li>
-            <Link to="/deconnexion">Se déconnecter</Link>
-          </li>
+          <>
+            <li>
+              <Link to="/deconnexion">Se déconnecter</Link>
+            </li>
+            <li>
+              <Link to="/audio">écouter</Link>
+            </li>
+          </>
         )}
-        <li>Yoga Nidra</li>
-        <li>A propos</li>
       </ul>
     </nav>
   );
