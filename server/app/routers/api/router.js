@@ -10,6 +10,10 @@ const usersRouter = require("./users/router");
 
 router.use("/users", usersRouter);
 
+const authRouter = require("./auth/router");
+
+router.use("/auth", authRouter);
+
 const audiosRouter = require("./audios/router");
 
 router.use("/audios", audiosRouter);

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const AbstractRepository = require("./AbstractRepository");
 
 class UserRepository extends AbstractRepository {
@@ -9,7 +8,7 @@ class UserRepository extends AbstractRepository {
   // Browse - Read All
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT u.name, u.email, u.password, r.name AS role FROM ${this.table} AS u JOIN role AS r ON u.role_id=r.id`
+      `SELECT u.username, u.email, u.password, r.name AS role FROM ${this.table} AS u JOIN role AS r ON u.role_id=r.id`
     );
     return rows;
   }
@@ -17,20 +16,29 @@ class UserRepository extends AbstractRepository {
   // Read
   async read(id) {
     const [row] = await this.database.query(
-      `SELECT u.name, u.email, u.password, r.name AS role FROM ${this.table} AS u JOIN role AS r ON u.role_id=r.id WHERE u.id=?`,
+      `SELECT u.username, u.email, u.password, r.name AS role FROM ${this.table} AS u JOIN role AS r ON u.role_id=r.id WHERE u.id=?`,
       [id]
     );
     return row[0];
   }
 
   // Add - Create
-  async create(name, email, password, role_id) {
+  async create(username, email, password) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name, email, password, role_id) VALUES (?, ?, ?, ?)`,
-      [name, email, password, role_id]
+      `INSERT INTO ${this.table} (username, email, password) VALUES (?, ?, ?)`,
+      [username, email, password]
     );
 
     return result.insertId;
+  }
+
+  // Search user by email
+  async searchByEmail(email) {
+    const [result] = await this.database.query(
+      `SELECT username, email, password, r.name AS role FROM ${this.table} JOIN role AS r ON user.role_id=r.id WHERE email=?`,
+      [email]
+    );
+    return result;
   }
 }
 

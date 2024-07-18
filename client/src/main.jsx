@@ -1,10 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 import App from "./App";
 import HomePage from "./pages/homepage/HomePage";
+import SignupPage from "./pages/signupPage/SignupPage";
+import LoginPage from "./pages/loginpage/LoginPage";
+import LogoutPage from "./pages/logoutpage/LogoutPage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +21,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/inscription",
+        element: <SignupPage />,
+      },
+      {
+        path: "/connexion",
+        element: <LoginPage />,
+      },
+      {
+        path: "/deconnexion",
+        element: <LogoutPage />,
+      },
+      {
+        path: "/*",
+        element: <Navigate to="/" />,
       },
     ],
   },

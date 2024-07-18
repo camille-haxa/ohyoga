@@ -1,0 +1,12 @@
+@import url("./variables.css");
+@font-face {
+  font-family: jetbrains-mono;
+  src: url("./assets/fonts/jetbrains-mono/JetBrainsMono-Regular.ttf");
+}
+
+body {
+  background-color: var(--white);
+  font-family: "jetbrains-mono";
+  margin: 0;
+  padding: 0;
+}
