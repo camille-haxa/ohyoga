@@ -26,7 +26,6 @@ export default function AudioForm() {
       axios.get(`${express}/api/categories`).then((response) => {
         const { data } = response;
         setCategoryData(data);
-        console.info(data);
       });
     } catch (err) {
       console.error(err);
