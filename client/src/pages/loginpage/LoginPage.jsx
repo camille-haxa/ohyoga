@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useOutletContext, Link } from "react-router-dom";
 import axios from "axios";
+import "./LoginPage.css";
 
 export default function LoginPage() {
   const { currentUser, setCurrentUser } = useOutletContext();
@@ -31,17 +32,23 @@ export default function LoginPage() {
 
   return (
     <section>
-      <h1>Connexion</h1>
+      <h1 className="login-h1">Connexion</h1>
       <div>
-        <p>
+        <h4 className="login-noaccount">
           pas de compte? pour vous inscrire{" "}
-          <Link to="/inscription"> cliquez ici </Link>
-        </p>
+          <Link to="/inscription" id="signup-link">
+            {" "}
+            cliquez ici{" "}
+          </Link>{" "}
+        </h4>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="email">email</label>
+      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="login-field">
+          <label className="login-form-label" htmlFor="email">
+            email
+          </label>
           <input
+            className="login-input"
             type="email"
             name="email"
             {...register("email", {
@@ -56,11 +63,16 @@ export default function LoginPage() {
               },
             })}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && (
+            <p className="login-error">{errors.email.message}</p>
+          )}
         </div>
-        <div>
-          <label htmlFor="mot de passe">mot de passe</label>
+        <div className="login-field">
+          <label className="login-form-label" htmlFor="mot de passe">
+            mot de passe
+          </label>
           <input
+            className="login-input"
             type="password"
             name="password"
             {...register("password", {
@@ -77,9 +89,13 @@ export default function LoginPage() {
               },
             })}
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <p className="login-error">{errors.password.message}</p>
+          )}
         </div>
-        <button type="submit">se connecter</button>
+        <button className="login-button" type="submit">
+          se connecter
+        </button>
       </form>
     </section>
   );

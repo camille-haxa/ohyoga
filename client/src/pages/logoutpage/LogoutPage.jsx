@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useOutletContext, Link } from "react-router-dom";
 
+import "./LogoutPage.css";
+
 export default function LogoutPage() {
   const { currentUser, setCurrentUser } = useOutletContext();
   const expressURL = import.meta.env.VITE_API_URL;
@@ -17,17 +19,26 @@ export default function LogoutPage() {
   };
 
   return (
-    <div>
+    <div className="logout">
       {currentUser == null ? (
         <>
-          <p>Vous êtes déconnecté</p>
-          <Link to="/">Home</Link>
+          <p className="logout-title">Vous êtes déconnecté</p>
+          <Link to="/" id="logout-link">
+            Home
+          </Link>
         </>
       ) : (
-        <button type="button" onClick={handleLogout}>
-          {" "}
-          Logout{" "}
-        </button>
+        <>
+          <h4 className="logout-title">cliquez pour vous déconnecter</h4>
+          <button
+            className="logout-button"
+            type="button"
+            onClick={handleLogout}
+          >
+            {" "}
+            Déconnexion{" "}
+          </button>
+        </>
       )}
     </div>
   );
