@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+
 const tables = require("../../database/tables");
 
 // Browse - Read All
@@ -46,4 +47,16 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, add };
+// Delete - Destroy
+const destroy = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deletedAudio = await tables.audio.destroy(id);
+
+    res.sendStatus(204).json({ removed: deletedAudio });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { browse, read, add, destroy };
