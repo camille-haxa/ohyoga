@@ -9,7 +9,7 @@ class AudioRepository extends AbstractRepository {
   // Browse - Read All
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT a.title, a.url, a.image, a.description FROM ${this.table}`
+      `SELECT title, url, image, description FROM ${this.table}`
     );
     return rows;
   }

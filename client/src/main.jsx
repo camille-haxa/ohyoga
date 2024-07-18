@@ -13,6 +13,9 @@ import SignupPage from "./pages/signupPage/SignupPage";
 import LoginPage from "./pages/loginpage/LoginPage";
 import LogoutPage from "./pages/logoutpage/LogoutPage";
 import AdminPage from "./pages/adminpage/AdminPage";
+import AudioPage from "./pages/audiopage/AudioPage";
+
+const express = import.meta.env.VITE_API_URL;
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,13 @@ const router = createBrowserRouter([
         path: "/patate",
         element: <AdminPage />,
       },
+
+      {
+        path: "/audio",
+        element: <AudioPage />,
+        loader: () => fetch(`${express}/api/audios`),
+      },
+
       {
         path: "/*",
         element: <Navigate to="/" />,

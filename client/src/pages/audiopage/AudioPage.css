@@ -1,0 +1,31 @@
+@import url("../../variables.css");
+
+.audio-title {
+  text-align: center;
+  padding-top: 2rem;
+}
+.audio-title2 {
+  text-align: center;
+}
+
+.audiomap-container {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.audio-img {
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.audio-description {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 700px) {
+  .audiomap-container {
+    width: 30rem;
+  }
+}
