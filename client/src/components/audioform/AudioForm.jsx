@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
-
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function AudioForm() {
   const expressURL = import.meta.env.VITE_API_URL;
-
+  const [categoryData, setCategoryData] = useState();
   const {
     register,
     handleSubmit,
@@ -19,6 +19,19 @@ export default function AudioForm() {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    const express = import.meta.env.VITE_API_URL;
+    try {
+      axios.get(`${express}/api/categories`).then((response) => {
+        const { data } = response;
+        setCategoryData(data);
+        console.info(data);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
 
   const requiredFieldError = "Ce champ est obligatoire !";
 
@@ -81,6 +94,20 @@ export default function AudioForm() {
           />
           {errors.description && <p> {errors.description.message}</p>}
         </div>
+        <div className="audio-category">
+          <label htmlFor="categorie">Catégorie </label>
+          <select name="category" {...register("category_id")}>
+            {categoryData?.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button className="audio-button" type="submit">
+          {" "}
+          ajouter
+        </button>
       </form>
     </section>
   );

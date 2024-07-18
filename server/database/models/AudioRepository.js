@@ -24,8 +24,7 @@ class AudioRepository extends AbstractRepository {
   }
 
   // Add - Create
-  async create(audio) {
-    const { title, url, image, description, category_id } = audio;
+  async create(title, url, image, description, category_id) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (title, url, image, description, category_id) VALUES (?, ?, ?, ?, ?)`,
       [title, url, image, description, category_id]
