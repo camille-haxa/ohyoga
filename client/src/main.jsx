@@ -11,6 +11,7 @@ import App from "./App";
 import HomePage from "./pages/homepage/HomePage";
 import SignupPage from "./pages/signupPage/SignupPage";
 import LoginPage from "./pages/loginpage/LoginPage";
+import LogoutPage from "./pages/logoutpage/LogoutPage";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/connexion",
         element: <LoginPage />,
+      },
+      {
+        path: "/deconnexion",
+        element: <LogoutPage />,
       },
       {
         path: "/*",
