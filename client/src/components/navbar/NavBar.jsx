@@ -1,29 +1,47 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import "./NavBar.css";
+
 export default function NavBar({ currentUser }) {
   return (
     <nav className="navbar-container">
-      <ul>
-        <li>
-          <Link to="/">Accueil</Link>
-        </li>
-        {currentUser === null ? (
+      <div>
+        <ul className="navbar-list">
+          {currentUser ? (
+            <li className="navbar">hello {currentUser.username} !</li>
+          ) : null}
           <li>
-            <Link to="/connexion">Connexion</Link> /{" "}
-            <Link to="/inscription">Inscription</Link>
+            <Link className="navbar-link" to="/">
+              Accueil
+            </Link>
           </li>
-        ) : (
-          <>
+          {currentUser === null ? (
             <li>
-              <Link to="/deconnexion">Se déconnecter</Link>
+              <Link className="navbar-link" to="/connexion">
+                Connexion
+              </Link>{" "}
+              /{" "}
+              <Link className="navbar-link" to="/inscription">
+                Inscription
+              </Link>
             </li>
-            <li>
-              <Link to="/audio">écouter</Link>
-            </li>
-          </>
-        )}
-      </ul>
+          ) : (
+            <>
+              <li>
+                <Link className="navbar-link" to="/deconnexion">
+                  Se déconnecter
+                </Link>
+              </li>
+              <li>
+                <Link className="navbar-link" to="/audio">
+                  écouter
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
     </nav>
   );
 }

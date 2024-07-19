@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import "./AudioForm.css";
+
 export default function AudioForm() {
   const expressURL = import.meta.env.VITE_API_URL;
   const [categoryData, setCategoryData] = useState();
@@ -36,11 +38,15 @@ export default function AudioForm() {
 
   return (
     <section>
-      <h1>Ajouter un enregistrement</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="titre"> titre </label>
+      <h1 className="audio-h1">Ajouter un enregistrement</h1>
+      <form className="audio-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="audio-field">
+          <label className="form-label" htmlFor="titre">
+            {" "}
+            titre{" "}
+          </label>
           <input
+            className="audio-input"
             type="text"
             name="title"
             {...register("title", {
@@ -55,32 +61,46 @@ export default function AudioForm() {
             <p className="audio-upload-error">{errors.title.message}</p>
           )}
         </div>
-        <div className="audio-url">
-          <label htmlFor="url">URL</label>
+        <div className="audio-field">
+          <label className="form-label" htmlFor="url">
+            URL
+          </label>
           <input
+            className="audio-input"
             type="text"
             name="url"
             {...register("url", {
               required: requiredFieldError,
             })}
           />
-          {errors.url && <p> {errors.url.message}</p>}
+          {errors.url && (
+            <p className="audio-upload-error"> {errors.url.message}</p>
+          )}
         </div>
-        <div className="audio-image-url">
-          <label htmlFor="image">Thumbnail</label>
+        <div className="audio-field">
+          <label className="form-label" htmlFor="image">
+            Thumbnail
+          </label>
           <input
+            className="audio-input"
             type="text"
             name="image"
             {...register("image", {
               required: requiredFieldError,
             })}
           />
-          {errors.image && <p> {errors.image.message}</p>}
+          {errors.image && (
+            <p className="audio-upload-error"> {errors.image.message}</p>
+          )}
         </div>
 
-        <div className="audio-description">
-          <label htmlFor="description"> Description </label>
+        <div className="audio-field">
+          <label className="form-label" htmlFor="description">
+            {" "}
+            Description{" "}
+          </label>
           <input
+            className="audio-input"
             type="text"
             name="description"
             {...register("description", {
@@ -91,11 +111,19 @@ export default function AudioForm() {
               },
             })}
           />
-          {errors.description && <p> {errors.description.message}</p>}
+          {errors.description && (
+            <p className="audio-upload-error"> {errors.description.message}</p>
+          )}
         </div>
-        <div className="audio-category">
-          <label htmlFor="categorie">Catégorie </label>
-          <select name="category" {...register("category_id")}>
+        <div className="audio-field">
+          <label className="form-label" htmlFor="categorie">
+            Catégorie{" "}
+          </label>
+          <select
+            className="audio-input"
+            name="category"
+            {...register("category_id")}
+          >
             {categoryData?.map((cat) => (
               <option key={cat.id} value={cat.id}>
                 {cat.name}
