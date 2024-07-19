@@ -35,5 +35,7 @@ CREATE TABLE privilege (
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
+INSERT INTO category (name) VALUES ('meditation'), ('nidra');
+
 -- Création de roles
 INSERT INTO role (name) VALUES ('user'), ('admin');
