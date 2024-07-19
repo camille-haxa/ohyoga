@@ -1,5 +1,37 @@
 # ohyoga
 
+
+2 days project  
+my other job is teaching yoga, i mostly teach remotely,   
+i wanted to developp a small website to allow my students to access audio and video recordings upon registration and login
+
+### tools
+- react
+- node js
+- express
+- argon2
+- joi
+- cookie parser
+- cors
+- axios
+- react hook form
+- react router dom
+
+## modelisation
+
+![Capture d’écran du 2024-07-19 08-57-06](https://github.com/user-attachments/assets/65759923-0300-46df-a3f6-50f0d531fcce)
+
+## wireframes
+
+using penpot <https://penpot.app/> (an open source alternative to figma, try it it's great!)
+
+![Capture d’écran du 2024-07-19 12-40-49](https://github.com/user-attachments/assets/f41012d1-df28-4f1d-b5e4-0932c93aa80c)
+
+---
+
+
+
+
 This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
 It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
 
