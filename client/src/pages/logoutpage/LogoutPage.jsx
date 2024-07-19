@@ -22,9 +22,9 @@ export default function LogoutPage() {
     <div className="logout">
       {currentUser == null ? (
         <>
-          <p className="logout-title">Vous êtes déconnecté</p>
+          <p className="logout-title">Vous êtes déconnecté.e</p>
           <Link to="/" id="logout-link">
-            Home
+            retour à l'accueil
           </Link>
         </>
       ) : (

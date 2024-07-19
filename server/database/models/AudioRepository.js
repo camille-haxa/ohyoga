@@ -9,7 +9,7 @@ class AudioRepository extends AbstractRepository {
   // Browse - Read All
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT title, url, image, description FROM ${this.table}`
+      `SELECT id, title, url, image, description, category_id FROM ${this.table}`
     );
     return rows;
   }
@@ -17,7 +17,7 @@ class AudioRepository extends AbstractRepository {
   // Read
   async read(id) {
     const [row] = await this.database.query(
-      `SELECT a.title, a.url, a.image, a.description, c.name AS category FROM ${this.table} AS a JOIN category AS c ON a.category_id=c.id where a.id = ?`,
+      `SELECT a.id, a.title, a.url, a.image, a.description, c.name AS category FROM ${this.table} AS a JOIN category AS c ON a.category_id = c.id where a.id = ?`,
       [id]
     );
     return row[0];
