@@ -13,9 +13,8 @@ export default function App() {
 
   return (
     <div>
-      <p> hello {currentUser?.username}</p>
+      <Navbar currentUser={currentUser} />
       <main>
-        <Navbar currentUser={currentUser} />
         <Outlet context={{ currentUser, setCurrentUser }} />
       </main>
     </div>
