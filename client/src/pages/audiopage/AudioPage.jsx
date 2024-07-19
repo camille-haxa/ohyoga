@@ -5,7 +5,6 @@ import "./AudioPage.css";
 export default function AudioPage() {
   const audioData = useLoaderData();
 
-  console.info(audioData);
   return (
     <>
       <h1 className="audio-title">Yoga nidra et méditations</h1>
