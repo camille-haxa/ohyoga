@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 
 import axios from "axios";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +18,9 @@ export default function SignupPage() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post(`${expressURL}/api/users`, data);
+      await axios
+        .post(`${expressURL}/api/users`, data)
+        .finally(() => navigate("/connexion"));
     } catch (err) {
       console.error(err);
     }

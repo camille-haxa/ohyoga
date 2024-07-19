@@ -1,11 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
-import { useOutletContext, Link } from "react-router-dom";
+import { useOutletContext, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
+import { useEffect } from "react";
 
 export default function LoginPage() {
   const { currentUser, setCurrentUser } = useOutletContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser?.role === "user") {
+      navigate("/audio");
+    }
+    if (currentUser?.role === "admin") {
+      navigate("/patate");
+    }
+  }, [currentUser, navigate]);
 
   const {
     register,
