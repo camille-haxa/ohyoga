@@ -9,7 +9,7 @@ class AudioRepository extends AbstractRepository {
   // Browse - Read All
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT id, title, url, image, description, category_id FROM ${this.table}`
+      `SELECT a.id, a.title, a.url, a.image, a.description, a.category_id, c.name AS category FROM ${this.table} As a JOIN category AS c ON a.category_id = c.id`
     );
     return rows;
   }
